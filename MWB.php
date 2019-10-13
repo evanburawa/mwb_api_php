@@ -56,15 +56,8 @@ class MWB{
   public function call(){
     
     $response = $this->API->call();
-    
-    // Default ot JSON if nothing else is specified
-    $this->IO->setOutputType($this->API->outputType);
-    
-    $this->IO->setMwbtabInput($response);
-    
-    $output = $this->IO->render();
-    
-    return $output;
+
+    return $response;
   }
 
 }

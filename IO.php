@@ -25,14 +25,14 @@ class IO{
   }
 
   protected function _isJson(){
-    json_decode($string);
+    json_decode($this->response);
     return (json_last_error() == JSON_ERROR_NONE);
   }
 
   protected function _isTxt(){
-    $fileInfo = new finfo(FILEINFO_MIME); // object oriented approach!
+    $fileInfo = new finfo(FILEINFO_MIME);
     $mimeType = $fileInfo->buffer($this->response);
-    return ($mimeType == 'txt')
+    return ($mimeType == 'txt');
   }  
 
   public function _convertToMWBTab(){

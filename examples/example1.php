@@ -1,4 +1,5 @@
 <?php
+// Turn Errors On
 error_reporting( E_ALL );
 ini_set( "display_errors", 1 );
 
@@ -13,6 +14,9 @@ ini_set( "display_errors", 1 );
 require_once '../MWB.php';
 require_once '../API.php';
 require_once '../IO.php';
+
+
+//$url ="https://www.metabolomicsworkbench.org/rest/study/analysis_id/AN000696/mwtab/json";
 
 
 /**
@@ -46,18 +50,19 @@ $outputFormat = 'json';
 /**
 *   Test:  Analystic ID
 */
+
+/*
 $API->setContext($context);
 $API->setInputItem($inputItem);
 $API->setInputValue($inputValue);
 $API->setOutputItem($outputItem);
 $API->setOutputFormat($outputFormat);
+*/
+
+//print_r($API->_formatStudyNumber('102'));
+//print_r($API->_formatArticleNumber('112'));
 
 
-
-
-
-print_r($API->_formatStudyNumber('102'));
-print_r($API->_formatArticleNumber('112'));
 
 
 $MWB->setContext($context);
@@ -66,7 +71,11 @@ $MWB->setInputValue($inputValue);
 $MWB->setOutputItem($outputItem);
 $MWB->setOutputFormat($outputFormat);
 
+$results = $MWB->call();
 
+?><?php
+print_r($results);
+?><?php
 
 
 /**
