@@ -12,7 +12,7 @@ class API extends MWB{
   protected $outputFormat;
 
 
-  function __construct($articleID='', $inputType='', $outputType=''){
+  function __construct($context='', $inputItem='', $inputValue='', $ouputItem='', $outputFormat=''){
     
 
     /**
@@ -23,8 +23,7 @@ class API extends MWB{
         'inputItem',       
         'inputValue', 
         'ouputItem',          
-        'outputFormat'          
-      )
+        'outputFormat'
     );
   
   }
@@ -46,27 +45,25 @@ class API extends MWB{
   }
 
   public function setOutputFormat($outputFormat){
-      $this->outputFormat = $outputForm;
+      $this->outputFormat = $outputFormat;
   }
 
 
  private function _formatInputData(){
     // Format Article number (if applicable)
     if($this->inputItem == 'study_id'){
-
+      $this->_formatStudyNumber();
     }elseif($this->inputItem == 'analysis_id'){
-
+      $this->_formatArticleNumber();
     }
-
  }
 
- private function _formatArticleNUmber(int $number){
-
+ public function _formatArticleNUmber($number){
+    return "AN".sprintf('%06d', $number);
  }
 
- private function _formatStudyNUmber(int $number){
-    $studyNum = "ST".sprintf('%08d', $number);
-    return $studyNum;
+ public function _formatStudyNumber($number){
+    return "ST".sprintf('%06d', $number);
  }
 
   private function _generateAPIURI(){
@@ -100,12 +97,13 @@ class API extends MWB{
 
 
   private function _fetchFile($apiURL){
-      return file_get_contents($apiURL);
+      $response = file_get_contents($apiURL);
   }
 
   private function _readFile(){
 
   }
+  
   public function call(){
     if($this->_APIParamCheck()){
 
@@ -113,7 +111,7 @@ class API extends MWB{
 
       $contents = $this->_fetchFile($apiURL);
       
-      return $contents 
+      return $contents; 
     }
 
     return false;

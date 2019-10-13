@@ -1,4 +1,8 @@
 <?php
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
+
+
 /**
 *   Examples
 */
@@ -15,12 +19,17 @@ require_once '../IO.php';
 *   Setup 
 */
 
+
+
 $MWB = new MWB\MWB;
 $IO = new MWB\IO;
 $API = new MWB\API;
 
 $MWB->setAPI($API);
 $MWB->setIO($IO);
+
+
+
 
 /**
 *   Variables
@@ -34,12 +43,29 @@ $inputValue   = '1';    // Value to check (analysis_id, Study_id)
 $outputItem   = 'mwtab';
 $outputFormat = 'json';
 
+/**
+*   Test:  Analystic ID
+*/
+$API->setContext($context);
+$API->setInputItem($inputItem);
+$API->setInputValue($inputValue);
+$API->setOutputItem($outputItem);
+$API->setOutputFormat($outputFormat);
+
+
+
+
+
+print_r($API->_formatStudyNumber('102'));
+print_r($API->_formatArticleNumber('112'));
+
 
 $MWB->setContext($context);
 $MWB->setInputItem($inputItem);
 $MWB->setInputValue($inputValue);
 $MWB->setOutputItem($outputItem);
 $MWB->setOutputFormat($outputFormat);
+
 
 
 

@@ -4,14 +4,17 @@ namespace MWB;
 
 class MWB{
   
-  function __construct($article_id=NULL){
+  function __construct(API $API = NULL, IO $IO = NULL){
     
-    $this->article_id = $article_id;
-
-    $this->IO = NULL;
-    $this->API = NULL;
+    $this->IO = $IO;
+    $this->API = $API;
 
   }
+  
+  
+  /**
+  *   Dependencies
+  */
 
   public function setAPI(API $API){
     $this->API = $API;
@@ -21,26 +24,31 @@ class MWB{
     $this->IO = $IO;
   }
 
-  public function setArticleID(int $article_id){
-    $this->article_id = $article_id;
-    $this->_setChildrenArticleIDs($article_id);
-  }
-
 
   /**
   *   Set API params
   */
-  public function setInputType($type){
-    $this->API->setInputType($type);
+
+  public function setContext($context){
+      $this->API->context = trim(strtolower($context));
   }
 
-  public function setOutputType($type){
-    $this->API->setOuputType($type);
+  public function setInputItem($inputItem){
+      $this->API->inputItem = trim(strtolower($inputItem));
+  }
+
+  public function setInputValue($inputValue){
+      $this->API->inputValue = trim(strtolower($inputValue));
   }  
 
-  private function _setArticleID($article_id){
-    $this->API->setArticleID($article_id);    
+  public function setOutputItem($outputItem){
+      $this->API->outputItem = trim(strtolower($outputItem));
   }
+
+  public function setOutputFormat($outputFormat){
+      $this->API->outputFormat = trim(strtolower($outputFormat));
+  }
+
 
   /**
   *   call and render API call

@@ -1,7 +1,10 @@
 <?php
 namespace MWB;
 
-class IO extends MWB{
+class IO{
+
+  protected $outputType;
+  protected $response;
 
   function __construct($response = NULL){
     $this->response = $response;
@@ -12,15 +15,50 @@ class IO extends MWB{
     $this->response = $response;
   }
 
-  protected _isMwtab(){
+  public function setOuputType($outputType){
+    $this->outputType = $outputType;
+  }
+
+
+  protected function _isMwtab(){
 
   }
 
-  protected _isJson(){
+  protected function _isJson(){
+    json_decode($string);
+    return (json_last_error() == JSON_ERROR_NONE);
+  }
+
+  protected function _isTxt(){
+    $fileInfo = new finfo(FILEINFO_MIME); // object oriented approach!
+    $mimeType = $fileInfo->buffer($this->response);
+    return ($mimeType == 'txt')
+  }  
+
+  public function _convertToMWBTab(){
+
+  }
+
+  public function _convertToJSON(){
+
+  }
+
+  public function _convertToTxt(){
 
   }
 
   public function render(){
+    if($this->outputType == 'json'){
+      if($this->_isJson($this->response)){
+        return $this->response;
+      }else{
 
+      }
+    }elseif($this->outpuType == 'txt'){
+
+    }else{
+      // MWTAB
+    }
   }
+
 }
