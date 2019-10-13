@@ -22,10 +22,32 @@ $API = new MWB\API;
 $MWB->setAPI($API);
 $MWB->setIO($IO);
 
+/**
+*   Variables
+*/
+$context      = 'study';
+
+//$inputItem    = 'study_id';
+$inputItem    = 'analysis_id';
+
+$inputValue   = '1';    // Value to check (analysis_id, Study_id)
+$outputItem   = 'mwtab';
+$outputFormat = 'json';
+
+
+$MWB->setContext($context);
+$MWB->setInputItem($inputItem);
+$MWB->setInputValue($inputValue);
+$MWB->setOutputItem($outputItem);
+$MWB->setOutputFormat($outputFormat);
+
+
 
 /**
 *   Example:  Reading one article
 */
+
+/*
 $article_id = 1
 
 $MWB->setArticleID($article_id);
@@ -43,6 +65,8 @@ print_r($results);
 *   Example:  Reading multiple articles
 */
 
+
+/*
 $MWB->setArticleIDs(array(1,2);
 $MWB->setInputType('mtab');
 $MWB->setOutputType('txt');
