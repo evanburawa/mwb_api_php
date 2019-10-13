@@ -1,32 +1,20 @@
-#################################################################################################
-#################################################################################################
-#################################################################################################
+
 #  MWB PHP API
-#  Author: Evan Burawa <evan.burawa@gmail.com>
-#################################################################################################
-#################################################################################################
-#################################################################################################
 
 
 
-#################################################################################################
-About
-#################################################################################################
+# About
 
 This library allows you to access the Metabolic Workbench REST API to get data for your application.  I was inspired to write an this after seeing the excellent work done on the Python project mwbtab.  Its an excellent library and inspired me to create a PHP based API for retrieving data.  The next goal will be to develop out the IO class to convert between file formats (which is already possible thanks to the excellent work done by the creators of mwbtab).  Thanks for checking this out and feel free to provide any feedback, always happy to hear it!  Thanks!
 
 
-#################################################################################################
-Additional Resources
-#################################################################################################
+# Additional Resources
 
 Metabolomics Workbench API Docs
 - https://www.metabolomicsworkbench.org/tools/MWRestAPIv1.0.pdf
 
 
-#################################################################################################
-Example
-#################################################################################################
+# Example
 
 Im currently working on getting some examples up in the examples folder, but for just a quick start check this out.
 
