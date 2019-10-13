@@ -18,7 +18,7 @@ Metabolomics Workbench API Docs
 
 Im currently working on getting some examples up in the examples folder, but for just a quick start check this out.
 
-
+```
 # Load the required libraries (currently there are 2)
 require_once '../MWB.php';
 require_once '../API.php';
@@ -48,6 +48,7 @@ $MWB->setOutputFormat($outputFormat);
 
 #  Finally, lets call the API via the MWB instance and wala!
 $results = $MWB->call();
+```
 
 
 
