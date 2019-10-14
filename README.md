@@ -1,5 +1,5 @@
 
-#  MWB PHP API
+#  MWB API PHP Library
 
 
 
